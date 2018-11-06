@@ -19,7 +19,7 @@ import java.util.UUID;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class YkgcApplicationTest {
+public class YkgcApplicationTestPojo {
     @Resource
     private UserService userService;
 
