@@ -1,0 +1,192 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 5224
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: namenode (MySQL 8.0.12)
+# Database: ykgc
+# Generation Time: 2018-11-06 15:37:55 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table TB_POLICE
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_POLICE`;
+
+CREATE TABLE `TB_POLICE` (
+  `ID` varchar(36) NOT NULL,
+  `UNIT_ID` varchar(36) DEFAULT NULL,
+  `ID_CARD` varchar(18) DEFAULT NULL,
+  `PHONE` varchar(15) DEFAULT NULL,
+  `POLICE_CODE` varchar(20) DEFAULT NULL,
+  `POLICE_LEVEL` int(11) DEFAULT NULL,
+  `REMARK` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_ROLE
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_ROLE`;
+
+CREATE TABLE `TB_ROLE` (
+  `ROLEID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
+  `ROLENAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `REMARK` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CREATETIME` date DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `ROLELEVEL` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ROLEID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_ROLE_MENU
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_ROLE_MENU`;
+
+CREATE TABLE `TB_ROLE_MENU` (
+  `MENUID` int(11) NOT NULL AUTO_INCREMENT,
+  `MENUNAME` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `MENUFATHERID` int(11) DEFAULT NULL,
+  `URL` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `ICON` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `REMARK` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `SORT` int(11) DEFAULT '0',
+  `ISINNER` int(11) DEFAULT '1',
+  `ISOUTER` int(11) DEFAULT '1',
+  `STATUS` int(11) DEFAULT '1',
+  PRIMARY KEY (`MENUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_ROLE_MENUITEM
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_ROLE_MENUITEM`;
+
+CREATE TABLE `TB_ROLE_MENUITEM` (
+  `MENUINNERID` int(11) NOT NULL AUTO_INCREMENT,
+  `ROLEID` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `ROLEMENUID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`MENUINNERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_USER_ROLES
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_USER_ROLES`;
+
+CREATE TABLE `TB_USER_ROLES` (
+  `ID` varchar(36) NOT NULL,
+  `USERID` varchar(36) DEFAULT NULL,
+  `ROLEID` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_USER_SESSION
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_USER_SESSION`;
+
+CREATE TABLE `TB_USER_SESSION` (
+  `SESSIONID` varchar(32) NOT NULL,
+  `USERNAME` varchar(32) DEFAULT NULL,
+  `LASTLOGINTIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `USERTYPE` int(11) DEFAULT '1',
+  `LOGINIP` varchar(32) DEFAULT NULL,
+  `LOGFROM` int(11) DEFAULT '1',
+  `VERSION` varchar(32) DEFAULT NULL,
+  `RESERVE1` varchar(32) DEFAULT NULL,
+  `RESERVE2` varchar(32) DEFAULT NULL,
+  `RESERVE3` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`SESSIONID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+# Dump of table TB_USERS
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `TB_USERS`;
+
+CREATE TABLE `TB_USERS` (
+  `USERID` varchar(36) NOT NULL,
+  `USERNAME` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `USERPASSWORD` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `REGISTERSITEID` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `AUTHORITY` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `REALNAME` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CARDID` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PHONE` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `DEPARTMENTID` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `LASTLOGINTIME` datetime DEFAULT CURRENT_TIMESTAMP,
+  `REMARK` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `ROLEID` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `POLICEINT` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `OLDERID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `DEPTGRADE` int(11) DEFAULT '4',
+  `CREATETIME` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CANDEL` int(11) DEFAULT '1',
+  `ISDEL` int(11) DEFAULT '0',
+  `RESERVE1` varchar(50) DEFAULT NULL,
+  `RESERVE2` varchar(50) DEFAULT NULL,
+  `RESERVE3` varchar(50) DEFAULT NULL,
+  `ISADMIN` int(11) DEFAULT NULL,
+  PRIMARY KEY (`USERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `TB_USERS` WRITE;
+/*!40000 ALTER TABLE `TB_USERS` DISABLE KEYS */;
+
+INSERT INTO `TB_USERS` (`USERID`, `USERNAME`, `USERPASSWORD`, `REGISTERSITEID`, `AUTHORITY`, `REALNAME`, `CARDID`, `PHONE`, `DEPARTMENTID`, `LASTLOGINTIME`, `REMARK`, `ROLEID`, `POLICEINT`, `OLDERID`, `DEPTGRADE`, `CREATETIME`, `CANDEL`, `ISDEL`, `RESERVE1`, `RESERVE2`, `RESERVE3`, `ISADMIN`)
+VALUES
+	('14e9debd-45be-443e-b928-94c710d3b204','string','string','string','string','string','string','string','string','2018-11-06 08:51:23','string','string','string','string',0,'2018-11-06 08:51:23',0,0,'string','string','string',0),
+	('1870a595-9cd8-40c1-94af-65cd88e2cf26',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('24af0023-27ab-443c-86d7-28e82197d966',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('3b3f2c84-ffa5-4a5c-bd6e-01c762385a69',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('4406c83d-54a9-461a-bb46-18ed234fa386',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('4a8f9fd3-110c-4796-812d-908cf4384215',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('7889b528-0151-4d0f-b26a-3d58c20637f3',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('810b70f8-f6f1-4014-9cb1-44935343063d',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('82e47330-f790-4152-b86c-4f973aeaff94',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('8587bced-bd5f-4494-932d-99fb756cba3a','string','string','string','string','string','string','string','string','2018-11-06 08:51:23','string','string','string','string',0,'2018-11-06 08:51:23',0,0,'string','string','string',0),
+	('87694021-8cc4-47c6-a6c2-46bc707ef2c4',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('9774da9f-c7e7-41f9-8566-d448701e68f0',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('c1195782-38e2-4cc1-8fca-43754595851f',NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
+	('cc97a76b-c9e5-41e2-b37e-09190f5f1d30','string','string','string','string','string','string','string','string','2018-11-06 08:33:39','string','string','string','string',0,'2018-11-06 08:33:39',0,0,'string','string','string',0),
+	('d5cecd3a-50bc-4713-a1dd-d2de6bc976d0','string','string','string','string','string','string','string','string','2018-11-06 08:51:23','string','string','string','string',0,'2018-11-06 08:51:23',0,0,'string','string','string',0),
+	('e22e69e4-7bd3-49f4-b056-60ebdf5b3a28','string','string','string','string','string','string','string','string','2018-11-06 08:51:23','string','string','string','string',0,'2018-11-06 08:51:23',0,0,'string','string','string',0);
+
+/*!40000 ALTER TABLE `TB_USERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
