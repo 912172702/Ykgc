@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--去掉注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--需要配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://namenode:3306/ykgc?characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password="qq1995912qq">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--指定entity生成的位置-->
+        <javaModelGenerator targetPackage="com.prtr.ykgc.entity" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--sql映射文件生成的位置 mapper.xml-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--指定DaoMapper生成的位置 mapper.java-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.prtr.ykgc.mapper"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--table是指定每个表的生成策略-->
+
+
+        <!--<table tableName="TB_ROLE" domainObjectName="Role">-->
+        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
+        <!--<columnOverride column="ROLENAME" property="roleName"></columnOverride>-->
+        <!--<columnOverride column="CREATETIME" property="createTime"></columnOverride>-->
+        <!--<columnOverride column="ROLELEVEL" property="roleLevel"></columnOverride>-->
+        <!--</table>-->
+        <!--<table tableName="TB_ROLE_MENU" domainObjectName="RoleMenu">-->
+        <!--<columnOverride column="MENUID" property="menuId"></columnOverride>-->
+        <!--<columnOverride column="MENUNAME" property="menuName"></columnOverride>-->
+        <!--<columnOverride column="MENUFATHERID" property="menuFatherId"></columnOverride>-->
+        <!--<columnOverride column="ISINNER" property="isInner"></columnOverride>-->
+        <!--<columnOverride column="ISOUTER" property="isOuter"></columnOverride>-->
+        <!--</table>-->
+        <!--<table tableName="TB_ROLE_MENUITEM" domainObjectName="RoleMenuItem">-->
+        <!--<columnOverride column="MENUINNERID" property="menuInnerId"></columnOverride>-->
+        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
+        <!--<columnOverride column="ROLEMENUID" property="roleMenuId"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="TB_USER_ROLES" domainObjectName="UserRoles">-->
+        <!--<columnOverride column="USERID" property="userId"></columnOverride>-->
+        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
+        <!--</table>-->
+        <!--<table tableName="TB_USER_SESSION" domainObjectName="UserSession">-->
+        <!--<columnOverride column="SESSIONID" property="sessionId"></columnOverride>-->
+        <!--<columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>-->
+        <!--<columnOverride column="USERTYPE" property="userType"></columnOverride>-->
+        <!--<columnOverride column="LOGINIP" property="loginIp"></columnOverride>-->
+        <!--<columnOverride column="LOGFROM" property="logFrom"></columnOverride>-->
+        <!--</table>-->
+
+
+        <table tableName="TB_USERS" domainObjectName="User">
+            <columnOverride column="USERID" property="userId"></columnOverride>
+            <columnOverride column="USERPASSWORD" property="userPassword"></columnOverride>
+            <columnOverride column="REGISTERSITEID" property="registerSiteId"></columnOverride>
+            <columnOverride column="REALNAME" property="realName"></columnOverride>
+            <columnOverride column="CARDID" property="carId"></columnOverride>
+            <columnOverride column="DEPARTMENTID" property="departmentId"></columnOverride>
+            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
+            <columnOverride column="ROLEID" property="roleId"></columnOverride>
+            <columnOverride column="POLICEINT" property="policeInt"></columnOverride>
+            <columnOverride column="OLDERID" property="oldErId"></columnOverride>
+            <columnOverride column="DEPTGRADE" property="deptGrade"></columnOverride>
+            <columnOverride column="CREATETIME" property="createTime"></columnOverride>
+            <columnOverride column="CANDEL" property="canDel"></columnOverride>
+            <columnOverride column="ISDEL" property="isDel"></columnOverride>
+            <columnOverride column="ISADMIN" property="isAdmin"></columnOverride>
+        </table>
+        <!--<table tableName="TB_POLICE" domainObjectName="Police"></table>-->
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%highlight{%d{HH:mm:ss} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=Bright Red, ERROR=Red, WARN=Bright Yellow, INFO=Green, DEBUG=Bright Cyan, TRACE=Bright White}"/>
+        </Console>
+        <!--<File name="File" fileName="dist/my.log">-->
+        <!--<PatternLayout pattern="[%-5p] %d %c - %m%n"/>-->
+        <!--</File>-->
+    </Appenders>
+    <Loggers>
+        <!--<Logger name="com.prtr.ykgc" level="INFO">-->
+        <!--<AppenderRef ref="File"/>-->
+        <!--</Logger>-->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
