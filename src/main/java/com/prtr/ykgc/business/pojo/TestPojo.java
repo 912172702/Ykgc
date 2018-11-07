@@ -7,4 +7,5 @@ package com.prtr.ykgc.business.pojo;
  * @Version 1.0
  */
 public class TestPojo {
+
 }

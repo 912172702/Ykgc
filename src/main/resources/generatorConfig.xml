@@ -37,36 +37,36 @@
         <!--table是指定每个表的生成策略-->
 
 
-        <!--<table tableName="TB_ROLE" domainObjectName="Role">-->
-        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
-        <!--<columnOverride column="ROLENAME" property="roleName"></columnOverride>-->
-        <!--<columnOverride column="CREATETIME" property="createTime"></columnOverride>-->
-        <!--<columnOverride column="ROLELEVEL" property="roleLevel"></columnOverride>-->
-        <!--</table>-->
-        <!--<table tableName="TB_ROLE_MENU" domainObjectName="RoleMenu">-->
-        <!--<columnOverride column="MENUID" property="menuId"></columnOverride>-->
-        <!--<columnOverride column="MENUNAME" property="menuName"></columnOverride>-->
-        <!--<columnOverride column="MENUFATHERID" property="menuFatherId"></columnOverride>-->
-        <!--<columnOverride column="ISINNER" property="isInner"></columnOverride>-->
-        <!--<columnOverride column="ISOUTER" property="isOuter"></columnOverride>-->
-        <!--</table>-->
-        <!--<table tableName="TB_ROLE_MENUITEM" domainObjectName="RoleMenuItem">-->
-        <!--<columnOverride column="MENUINNERID" property="menuInnerId"></columnOverride>-->
-        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
-        <!--<columnOverride column="ROLEMENUID" property="roleMenuId"></columnOverride>-->
-        <!--</table>-->
+        <table tableName="TB_ROLE" domainObjectName="Role">
+            <columnOverride column="ROLEID" property="roleId"></columnOverride>
+            <columnOverride column="ROLENAME" property="roleName"></columnOverride>
+            <columnOverride column="CREATETIME" property="createTime"></columnOverride>
+            <columnOverride column="ROLELEVEL" property="roleLevel"></columnOverride>
+        </table>
+        <table tableName="TB_ROLE_MENU" domainObjectName="RoleMenu">
+            <columnOverride column="MENUID" property="menuId"></columnOverride>
+            <columnOverride column="MENUNAME" property="menuName"></columnOverride>
+            <columnOverride column="MENUFATHERID" property="menuFatherId"></columnOverride>
+            <columnOverride column="ISINNER" property="isInner"></columnOverride>
+            <columnOverride column="ISOUTER" property="isOuter"></columnOverride>
+        </table>
+        <table tableName="TB_ROLE_MENUITEM" domainObjectName="RoleMenuItem">
+            <columnOverride column="MENUINNERID" property="menuInnerId"></columnOverride>
+            <columnOverride column="ROLEID" property="roleId"></columnOverride>
+            <columnOverride column="ROLEMENUID" property="roleMenuId"></columnOverride>
+        </table>
 
-        <!--<table tableName="TB_USER_ROLES" domainObjectName="UserRoles">-->
-        <!--<columnOverride column="USERID" property="userId"></columnOverride>-->
-        <!--<columnOverride column="ROLEID" property="roleId"></columnOverride>-->
-        <!--</table>-->
-        <!--<table tableName="TB_USER_SESSION" domainObjectName="UserSession">-->
-        <!--<columnOverride column="SESSIONID" property="sessionId"></columnOverride>-->
-        <!--<columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>-->
-        <!--<columnOverride column="USERTYPE" property="userType"></columnOverride>-->
-        <!--<columnOverride column="LOGINIP" property="loginIp"></columnOverride>-->
-        <!--<columnOverride column="LOGFROM" property="logFrom"></columnOverride>-->
-        <!--</table>-->
+        <table tableName="TB_USER_ROLES" domainObjectName="UserRoles">
+            <columnOverride column="USERID" property="userId"></columnOverride>
+            <columnOverride column="ROLEID" property="roleId"></columnOverride>
+        </table>
+        <table tableName="TB_USER_SESSION" domainObjectName="UserSession">
+            <columnOverride column="SESSIONID" property="sessionId"></columnOverride>
+            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
+            <columnOverride column="USERTYPE" property="userType"></columnOverride>
+            <columnOverride column="LOGINIP" property="loginIp"></columnOverride>
+            <columnOverride column="LOGFROM" property="logFrom"></columnOverride>
+        </table>
 
 
         <table tableName="TB_USERS" domainObjectName="User">
