@@ -1,5 +1,6 @@
 package com.prtr.ykgc.controller;
 
+import com.alibaba.druid.VERSION;
 import com.prtr.ykgc.business.annotation.AuthChecker;
 import com.prtr.ykgc.business.constant.Code;
 import com.prtr.ykgc.business.constant.UserRole;
@@ -23,12 +24,12 @@ import java.util.UUID;
  */
 @Api(description = "用户接口")
 @RestController
-@RequestMapping("/Ykgc")
+@RequestMapping("/Ykgc/v1")
 public class UserController {
     @Resource
     private UserService userService;
 
-    @ApiOperation(value = "新增用户", notes = "/insert", response = BaseResult.class)
+    @ApiOperation(value = "/insert", notes = "新增用户", response = BaseResult.class)
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE)
     @AuthChecker({UserRole.MANAGER})
     public BaseResult insertUser(@RequestBody User user) throws BusinessException {

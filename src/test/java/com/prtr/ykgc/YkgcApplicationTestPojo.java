@@ -1,5 +1,6 @@
 package com.prtr.ykgc;
 
+import com.prtr.ykgc.business.interceptor.TokenInterceptor;
 import com.prtr.ykgc.entity.User;
 import com.prtr.ykgc.service.UserService;
 import org.junit.Test;
@@ -21,16 +22,12 @@ import java.util.UUID;
 @WebAppConfiguration
 public class YkgcApplicationTestPojo {
     @Resource
-    private UserService userService;
+    TokenInterceptor tokenInterceptor;
 
     @Test
-    public void testInsert() {
-        User user = new User();
-        user.setAuthority("1");
-        user.setCanDel(0);
-        user.setCarId("1");
-        user.setUserId(UUID.randomUUID().toString());
-        //...
-        userService.insertUser(user);
+    public void test() {
+        System.out.println(tokenInterceptor.getTokenExpTime());
+        System.out.println(tokenInterceptor.getPathPatterns());
+        System.out.println(tokenInterceptor.getExcludePathPatterns());
     }
 }

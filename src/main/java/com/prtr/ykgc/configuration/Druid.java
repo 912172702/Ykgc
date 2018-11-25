@@ -121,7 +121,7 @@ public class Druid {
 
     @Bean
     public FilterRegistrationBean<WebStatFilter> statFilter() {
-        //创建过滤器
+        //创建过滤器陈根才
         FilterRegistrationBean<WebStatFilter> filterRegistrationBean = new FilterRegistrationBean<>(new WebStatFilter());
         //设置过滤器过滤路径
         filterRegistrationBean.addUrlPatterns("/*");

@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Objects;
 
 
 /**
@@ -32,7 +33,6 @@ import java.util.Arrays;
  */
 @Configuration
 @Aspect
-@Component
 public class AuthorityAop {
     private static final Logger logger = LoggerFactory.getLogger(AuthorityAop.class);
 
@@ -53,7 +53,7 @@ public class AuthorityAop {
     @Around("auth()")
     public BaseResult invoke(ProceedingJoinPoint point) throws Throwable {
         Object[] args = point.getArgs();
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         Cookie[] cookies = request.getCookies();
         boolean flag = false;
@@ -74,7 +74,7 @@ public class AuthorityAop {
         AuthChecker authChecker = method.getAnnotation(AuthChecker.class);
 
         UserRole[] roles = authChecker.value();
-        logger.error("允许的用户权限：" + Arrays.asList(roles));
+        logger.info("允许的用户权限：" + Arrays.asList(roles));
         //TODO 根据roles检查用户权限
 
         return (BaseResult) point.proceed(args);

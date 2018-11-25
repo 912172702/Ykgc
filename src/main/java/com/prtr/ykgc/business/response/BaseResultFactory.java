@@ -26,4 +26,8 @@ public class BaseResultFactory {
         return new BaseResult(code.getCode(), code.getMsg(), data);
     }
 
+    public static BaseResult produceResult(Code code) {
+        return new BaseResult(code.getCode(), code.getMsg());
+    }
+
 }

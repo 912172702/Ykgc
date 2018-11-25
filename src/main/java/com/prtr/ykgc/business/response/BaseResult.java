@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 @SuppressWarnings("unchecked")
 public final class BaseResult<T> {
-    private int code;
+    private int status;
     private String message;
     private T data = (T) new Object();
 
@@ -22,17 +22,17 @@ public final class BaseResult<T> {
 
     public BaseResult(String msg) {
         this();
-        this.code = 200;
+        this.status = 200;
         this.message = msg;
     }
 
     public BaseResult(int code, String message) {
-        this.code = code;
+        this.status = code;
         this.message = message;
     }
 
     public BaseResult(int code, String message, T data) {
-        this.code = code;
+        this.status = code;
         this.message = message;
         this.data = data;
     }
@@ -40,7 +40,7 @@ public final class BaseResult<T> {
     // 与Code码交互
     public BaseResult(Code code) {
         this();
-        this.code = code.getCode();
+        this.status = code.getCode();
         this.message = code.getMsg();
     }
 
@@ -50,7 +50,7 @@ public final class BaseResult<T> {
      * @param code 结果类型
      */
     public final void returnWithoutValue(Code code) {
-        this.code = code.getCode();
+        this.status = code.getCode();
         this.message = code.getMsg();
     }
 
@@ -65,13 +65,6 @@ public final class BaseResult<T> {
         this.data = object;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
 
     public String getMessage() {
         return message;
@@ -89,10 +82,18 @@ public final class BaseResult<T> {
         this.data = data;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "BaseResult{" +
-                "code=" + code +
+                "status=" + status +
                 ", message='" + message + '\'' +
                 ", data=" + data +
                 '}';

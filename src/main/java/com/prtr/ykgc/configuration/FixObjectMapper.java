@@ -18,4 +18,5 @@ public class FixObjectMapper {
         //当序列化空的对象时，不用报错
         return new ObjectMapper().disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
+
 }
