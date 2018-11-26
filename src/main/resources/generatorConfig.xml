@@ -38,59 +38,59 @@
 
 
         <table tableName="TB_ROLE" domainObjectName="Role">
-            <columnOverride column="ROLEID" property="roleId"></columnOverride>
-            <columnOverride column="ROLENAME" property="roleName"></columnOverride>
-            <columnOverride column="CREATETIME" property="createTime"></columnOverride>
-            <columnOverride column="TYPE" javaType="java.lang.Integer"></columnOverride>
-            <columnOverride column="ROLELEVEL" javaType="java.lang.Integer" property="roleLevel"></columnOverride>
+            <columnOverride column="ROLEID" property="roleId"/>
+            <columnOverride column="ROLENAME" property="roleName"/>
+            <columnOverride column="CREATETIME" property="createTime"/>
+            <columnOverride column="TYPE" javaType="java.lang.Integer"/>
+            <columnOverride column="ROLELEVEL" javaType="java.lang.Integer" property="roleLevel"/>
         </table>
         <table tableName="TB_ROLE_MENU" domainObjectName="RoleMenu">
-            <columnOverride column="MENUID" javaType="java.lang.Integer" property="menuId"></columnOverride>
-            <columnOverride column="MENUNAME" property="menuName"></columnOverride>
-            <columnOverride column="MENUFATHERID" javaType="java.lang.Integer" property="menuFatherId"></columnOverride>
-            <columnOverride column="SORT" javaType="java.lang.Integer"></columnOverride>
-            <columnOverride column="ISINNER" javaType="java.lang.Integer" property="isInner"></columnOverride>
-            <columnOverride column="ISOUTER" javaType="java.lang.Integer" property="isOuter"></columnOverride>
-            <columnOverride column="STATUS" javaType="java.lang.Integer"></columnOverride>
+            <columnOverride column="MENUID" javaType="java.lang.Integer" property="menuId"/>
+            <columnOverride column="MENUNAME" property="menuName"/>
+            <columnOverride column="MENUFATHERID" javaType="java.lang.Integer" property="menuFatherId"/>
+            <columnOverride column="SORT" javaType="java.lang.Integer"/>
+            <columnOverride column="ISINNER" javaType="java.lang.Integer" property="isInner"/>
+            <columnOverride column="ISOUTER" javaType="java.lang.Integer" property="isOuter"/>
+            <columnOverride column="STATUS" javaType="java.lang.Integer"/>
         </table>
         <table tableName="TB_ROLE_MENUITEM" domainObjectName="RoleMenuItem">
-            <columnOverride column="MENUINNERID" javaType="java.lang.Integer" property="menuInnerId"></columnOverride>
-            <columnOverride column="ROLEID" property="roleId"></columnOverride>
-            <columnOverride column="ROLEMENUID" javaType="java.lang.Integer" property="roleMenuId"></columnOverride>
+            <columnOverride column="MENUINNERID" javaType="java.lang.Integer" property="menuInnerId"/>
+            <columnOverride column="ROLEID" property="roleId"/>
+            <columnOverride column="ROLEMENUID" javaType="java.lang.Integer" property="roleMenuId"/>
         </table>
 
         <table tableName="TB_USER_ROLES" domainObjectName="UserRoles">
-            <columnOverride column="USERID" property="userId"></columnOverride>
-            <columnOverride column="ROLEID" property="roleId"></columnOverride>
+            <columnOverride column="USERID" property="userId"/>
+            <columnOverride column="ROLEID" property="roleId"/>
         </table>
         <table tableName="TB_USER_SESSION" domainObjectName="UserSession">
-            <columnOverride column="SESSIONID" property="sessionId"></columnOverride>
-            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
-            <columnOverride column="USERTYPE" javaType="java.lang.Integer" property="userType"></columnOverride>
-            <columnOverride column="LOGINIP" property="loginIp"></columnOverride>
-            <columnOverride column="LOGFROM" javaType="java.lang.Integer" property="logFrom"></columnOverride>
+            <columnOverride column="SESSIONID" property="sessionId"/>
+            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"/>
+            <columnOverride column="USERTYPE" javaType="java.lang.Integer" property="userType"/>
+            <columnOverride column="LOGINIP" property="loginIp"/>
+            <columnOverride column="LOGFROM" javaType="java.lang.Integer" property="logFrom"/>
         </table>
 
 
         <table tableName="TB_USERS" domainObjectName="User">
-            <columnOverride column="USERID" property="userId"></columnOverride>
-            <columnOverride column="USERPASSWORD" property="userPassword"></columnOverride>
-            <columnOverride column="REGISTERSITEID" property="registerSiteId"></columnOverride>
-            <columnOverride column="REALNAME" property="realName"></columnOverride>
-            <columnOverride column="CARDID" property="carId"></columnOverride>
-            <columnOverride column="DEPARTMENTID" property="departmentId"></columnOverride>
-            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
-            <columnOverride column="ROLEID" property="roleId"></columnOverride>
-            <columnOverride column="POLICENUMBER" property="policeNumber"></columnOverride>
-            <columnOverride column="OLDERID" property="oldErId"></columnOverride>
-            <columnOverride column="DEPTGRADE" javaType="java.lang.Integer" property="deptGrade"></columnOverride>
-            <columnOverride column="CREATETIME" property="createTime"></columnOverride>
-            <columnOverride column="CANDEL" javaType="java.lang.Integer" property="canDel"></columnOverride>
-            <columnOverride column="ISDEL" javaType="java.lang.Integer" property="isDel"></columnOverride>
-            <columnOverride column="ISADMIN" javaType="java.lang.Integer" property="isAdmin"></columnOverride>
+            <columnOverride column="USERID" property="userId"/>
+            <columnOverride column="USERPASSWORD" property="userPassword"/>
+            <columnOverride column="REGISTERSITEID" property="registerSiteId"/>
+            <columnOverride column="REALNAME" property="realName"/>
+            <columnOverride column="CARDID" property="carId"/>
+            <columnOverride column="DEPARTMENTID" property="departmentId"/>
+            <columnOverride column="LASTLOGINTIME" property="lastLoginTime"/>
+            <columnOverride column="ROLEID" property="roleId"/>
+            <columnOverride column="POLICENUMBER" property="policeNumber"/>
+            <columnOverride column="OLDERID" property="oldErId"/>
+            <columnOverride column="DEPTGRADE" javaType="java.lang.Integer" property="deptGrade"/>
+            <columnOverride column="CREATETIME" property="createTime"/>
+            <columnOverride column="CANDEL" javaType="java.lang.Integer" property="canDel"/>
+            <columnOverride column="ISDEL" javaType="java.lang.Integer" property="isDel"/>
+            <columnOverride column="ISADMIN" javaType="java.lang.Integer" property="isAdmin"/>
         </table>
         <table tableName="TB_POLICE" domainObjectName="Police">
-            <columnOverride column="POLICE_LEVEL" javaType="java.lang.Integer"></columnOverride>
+            <columnOverride column="POLICE_LEVEL" javaType="java.lang.Integer"/>
         </table>
 
     </context>
