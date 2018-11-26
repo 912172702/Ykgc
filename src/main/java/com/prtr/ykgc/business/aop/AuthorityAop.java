@@ -3,8 +3,12 @@ package com.prtr.ykgc.business.aop;
 import com.prtr.ykgc.business.annotation.AuthChecker;
 import com.prtr.ykgc.business.constant.Code;
 import com.prtr.ykgc.business.constant.UserRole;
+import com.prtr.ykgc.business.pojo.Token;
 import com.prtr.ykgc.business.response.BaseResult;
 import com.prtr.ykgc.business.response.BaseResultFactory;
+import com.prtr.ykgc.component.JwtComponent;
+import com.prtr.ykgc.entity.User;
+import com.prtr.ykgc.entity.UserSession;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,11 +16,14 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +42,10 @@ import java.util.Objects;
 @Aspect
 public class AuthorityAop {
     private static final Logger logger = LoggerFactory.getLogger(AuthorityAop.class);
-
+    @Value("${project.secret.tokenName}")
+    private String TOKEN_NAME;
+    @Resource
+    private JwtComponent jwtComponent;
 
     /**
      * 带有自定义注解的方法会被AOP拦截
@@ -54,29 +64,41 @@ public class AuthorityAop {
     public BaseResult invoke(ProceedingJoinPoint point) throws Throwable {
         Object[] args = point.getArgs();
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         Cookie[] cookies = request.getCookies();
         boolean flag = false;
-        for (Cookie cookie : cookies) {
-            if ("username".equals(cookie.getName())) {
-                flag = true;
-                if (!"caohui".equals(cookie.getValue())) {
-                    //return BaseResultFactory.produceResult(1, "你不是曹辉！用户权限拒绝！", Code.AUTH_DENIED);
+        if (!ObjectUtils.isEmpty(cookies)) {
+            for (Cookie cookie : cookies) {
+                if (TOKEN_NAME.equals(cookie.getName())) {
+                    //flag = true;
+                    String tokenJsonString = cookie.getValue();
+                    Token token = jwtComponent.decrypt(tokenJsonString);
+                    User user = token.getUser();
+                    UserRole role = UserRole.parseFromRoleId(user.getRoleId());
+                    if (!ObjectUtils.isEmpty(role)) {
+                        //获得API规定的角色列表
+                        Method method = ((MethodSignature) point.getSignature()).getMethod();
+                        AuthChecker authChecker = method.getAnnotation(AuthChecker.class);
+                        UserRole[] roles = authChecker.value();
+                        logger.info("允许的用户权限：" + Arrays.asList(roles));
+                        logger.info("该用户权限 : " + role);
+                        //根据roles检查用户权限
+                        for (UserRole auth : roles) {
+                            if (role == auth) {
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+                    break;
                 }
-                break;
             }
         }
-        //TODO 正常情况下这里需要编码后再添加到Cookie，以后会做
+
         if (!flag) {
-            response.addCookie(new Cookie("username", "caohui"));
+            logger.warn("用户权限拒绝！");
+            return BaseResultFactory.produceResult(Code.PERMISSION_DENIED);
         }
-        Method method = ((MethodSignature) point.getSignature()).getMethod();
-        AuthChecker authChecker = method.getAnnotation(AuthChecker.class);
-
-        UserRole[] roles = authChecker.value();
-        logger.info("允许的用户权限：" + Arrays.asList(roles));
-        //TODO 根据roles检查用户权限
-
+        logger.info("允许访问");
         return (BaseResult) point.proceed(args);
     }
 

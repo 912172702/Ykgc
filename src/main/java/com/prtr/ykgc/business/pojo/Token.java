@@ -1,5 +1,6 @@
 package com.prtr.ykgc.business.pojo;
 
+import com.prtr.ykgc.entity.User;
 import com.prtr.ykgc.entity.UserSession;
 import lombok.Data;
 
@@ -14,5 +15,5 @@ import java.io.Serializable;
 @Data
 public class Token implements Serializable {
     private long lastRequestTime;
-    private UserSession session;
+    private User user;
 }

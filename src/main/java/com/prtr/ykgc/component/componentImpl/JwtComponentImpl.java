@@ -24,7 +24,7 @@ import java.util.*;
 public class JwtComponentImpl implements JwtComponent {
 
     @Value("project.secret.secretKey")
-    private static String secretKey;
+    private  String secretKey;
     private Gson gson = new Gson();
 
     /**

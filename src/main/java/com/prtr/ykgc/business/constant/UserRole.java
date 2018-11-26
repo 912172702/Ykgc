@@ -1,7 +1,5 @@
 package com.prtr.ykgc.business.constant;
 
-import lombok.Data;
-
 /**
  * @Author: Knox
  * @Date: 2018/11/6 9:51 PM
@@ -10,22 +8,22 @@ import lombok.Data;
  */
 
 public enum UserRole {
-    MANAGER(1, "管理员"),
-    SELLER(2, "经销商");
+    MANAGER("1", "管理员"),
+    SELLER("2", "经销商");
 
-    private int roleId;
+    private String roleId;
     private String roleName;
 
-    UserRole(int roleId, String roleName) {
+    UserRole(String roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
@@ -35,5 +33,14 @@ public enum UserRole {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public static UserRole parseFromRoleId(String roleId) {
+        for (UserRole role : UserRole.values()) {
+            if (roleId.equals(role.getRoleId())) {
+                return role;
+            }
+        }
+        return null;
     }
 }

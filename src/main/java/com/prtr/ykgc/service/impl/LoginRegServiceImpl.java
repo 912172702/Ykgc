@@ -13,6 +13,7 @@ import com.prtr.ykgc.mapper.RoleMenuMapper;
 import com.prtr.ykgc.mapper.UserMapper;
 import com.prtr.ykgc.mapper.UserSessionMapper;
 import com.prtr.ykgc.service.LoginRegService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -46,6 +47,8 @@ public class LoginRegServiceImpl implements LoginRegService {
     private RoleMenuItemMapper roleMenuItemMapper;
     @Resource
     private JwtComponent jwtComponent;
+    @Value("${project.secret.tokenName}")
+    private String TOKEN_NAME;
 
     @Override
     @Transactional
@@ -74,15 +77,15 @@ public class LoginRegServiceImpl implements LoginRegService {
                 session.setUsername(username);
                 session.setUserType(userType);
                 session.setVersion(version);
-                session.setSessionId(UUID.randomUUID().toString());
+               // session.setSessionId(UUID.randomUUID().toString());
                 userSessionMapper.insert(session);
                 //response加入Token
                 Token token = new Token();
                 token.setLastRequestTime(System.currentTimeMillis());
-                token.setSession(session);
+                token.setUser(user);
                 String encrypt = jwtComponent.encrypt(token);
                 assert response != null;
-                response.addCookie(new Cookie("token", encrypt));
+                response.addCookie(new Cookie(TOKEN_NAME, encrypt));
                 //获取该用户的所有菜单列表
                 String roleId = user.getRoleId();
                 RoleMenuItemExample roleMenuItemExample = new RoleMenuItemExample();

@@ -1,7 +1,6 @@
 #服务器
 server:
   port: 8080
-
 #数据源配置
 spring:
   datasource:
@@ -10,6 +9,8 @@ spring:
     username: root
     password: qq1995912qq
     type: com.alibaba.druid.pool.DruidDataSource
+
+
 
 #配置druid连接池
 alibaba:
@@ -43,16 +44,22 @@ logging:
   config: classpath:log4j2.xml
 
 
+
 project:
   interceptor:
     token:
       pathPatterns:
         - /**
       excludePathPatterns:
+        - /
         - /**/login
-        - /**/autoLogin
-      #token的过期时间，20分钟(1200000毫秒)
-      tokenExpTime: 1200000
+        - /**/*.html
+        - /**/swagger-resources/**
+        - /csrf
+        - /error
+      #token的过期时间，10分钟(600000毫秒)
+      tokenExpTime: 600000
   secret:
     #加密中的盐值
     secretKey: Knox
+    tokenName: token

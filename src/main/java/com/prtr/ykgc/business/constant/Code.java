@@ -12,7 +12,7 @@ import lombok.Data;
 public enum Code {
     UNDEFINED(-0x0001, "未定义"),
     SUCCESS(0x0000, "成功"),
-    AUTH_DENIED(0x0001, "权限拒绝"),
+    PERMISSION_DENIED(0x0001, "权限拒绝"),
     //登录
     USERNAME_OR_PSW_ERROR(0x0002, "用户名或密码错误"),
     LOGIN_INFO_NOT_COMPLETE(0x0007, "登录信息不完整"),

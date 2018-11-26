@@ -6,11 +6,12 @@ import com.prtr.ykgc.business.pojo.Token;
 import com.prtr.ykgc.business.response.BaseResultFactory;
 import com.prtr.ykgc.component.JwtComponent;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -20,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,9 +33,13 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "project.interceptor.token")
 public class TokenInterceptor implements HandlerInterceptor {
+
+    private static Logger logger = LoggerFactory.getLogger(TokenInterceptor.class);
     private long tokenExpTime;
     private List<String> pathPatterns = new ArrayList<>();
     private List<String> excludePathPatterns = new ArrayList<>();
+    @Value("${project.secret.tokenName}")
+    private String TOKEN_NAME;
 
     @Resource
     private JwtComponent jwtComponent;
@@ -50,7 +54,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             flag = Code.NOT_LOGIN;
         else {
             for (Cookie cookie : cookies) {
-                if ("token".equals(cookie.getName())) {
+                if (TOKEN_NAME.equals(cookie.getName())) {
                     String tokenJsonString = cookie.getValue();
                     Token token = jwtComponent.decrypt(tokenJsonString);
                     if (!ObjectUtils.isEmpty(token)) {
@@ -59,6 +63,10 @@ public class TokenInterceptor implements HandlerInterceptor {
                             flag = Code.TOKEN_EXP;
                         } else {
                             flag = Code.GOOD_TOKEN;
+                            //重新写token时间
+                            logger.info(request.getRequestURI() + "用户已登录，通过拦截器");
+                            token.setLastRequestTime(System.currentTimeMillis());
+                            response.addCookie(new Cookie(TOKEN_NAME, jwtComponent.encrypt(token)));
                         }
                     }
                 }
@@ -68,10 +76,12 @@ public class TokenInterceptor implements HandlerInterceptor {
         switch (flag) {
             case NOT_CHECKED:
             case NOT_LOGIN:
+                logger.warn(request.getRequestURI() + "用户未登录！");
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                 response.getWriter().write(gson.toJson(BaseResultFactory.produceResult(Code.NOT_LOGIN)));
                 return false;
             case TOKEN_EXP:
+                logger.warn(request.getRequestURI() + "用户Token过期！");
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                 response.getWriter().write(gson.toJson(BaseResultFactory.produceResult(Code.TOKEN_EXP)));
                 return false;
