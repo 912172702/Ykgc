@@ -1,7 +1,6 @@
 package com.prtr.ykgc.component;
 
 import com.prtr.ykgc.business.pojo.Token;
-import com.prtr.ykgc.entity.UserSession;
 
 /**
  * @Author: Knox

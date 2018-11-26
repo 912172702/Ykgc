@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prtr.ykgc.mapper.UserSessionMapper">
   <resultMap id="BaseResultMap" type="com.prtr.ykgc.entity.UserSession">
-    <id column="SESSIONID" jdbcType="VARCHAR" property="sessionId" />
+    <result column="SESSIONID" jdbcType="VARCHAR" property="sessionId" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
     <result column="LASTLOGINTIME" jdbcType="TIMESTAMP" property="lastLoginTime" />
-    <result column="USERTYPE" jdbcType="INTEGER" property="userType" />
+    <result column="USERTYPE" jdbcType="DECIMAL" property="userType" />
     <result column="LOGINIP" jdbcType="VARCHAR" property="loginIp" />
-    <result column="LOGFROM" jdbcType="INTEGER" property="logFrom" />
+    <result column="LOGFROM" jdbcType="DECIMAL" property="logFrom" />
     <result column="VERSION" jdbcType="VARCHAR" property="version" />
     <result column="RESERVE1" jdbcType="VARCHAR" property="reserve1" />
     <result column="RESERVE2" jdbcType="VARCHAR" property="reserve2" />
@@ -89,16 +89,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from TB_USER_SESSION
-    where SESSIONID = #{sessionId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from TB_USER_SESSION
-    where SESSIONID = #{sessionId,jdbcType=VARCHAR}
-  </delete>
   <delete id="deleteByExample" parameterType="com.prtr.ykgc.entity.UserSessionExample">
     delete from TB_USER_SESSION
     <if test="_parameter != null">
@@ -111,7 +101,7 @@
       VERSION, RESERVE1, RESERVE2, 
       RESERVE3)
     values (#{sessionId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
-      #{userType,jdbcType=INTEGER}, #{loginIp,jdbcType=VARCHAR}, #{logFrom,jdbcType=INTEGER}, 
+      #{userType,jdbcType=DECIMAL}, #{loginIp,jdbcType=VARCHAR}, #{logFrom,jdbcType=DECIMAL}, 
       #{version,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, 
       #{reserve3,jdbcType=VARCHAR})
   </insert>
@@ -160,13 +150,13 @@
         #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="userType != null">
-        #{userType,jdbcType=INTEGER},
+        #{userType,jdbcType=DECIMAL},
       </if>
       <if test="loginIp != null">
         #{loginIp,jdbcType=VARCHAR},
       </if>
       <if test="logFrom != null">
-        #{logFrom,jdbcType=INTEGER},
+        #{logFrom,jdbcType=DECIMAL},
       </if>
       <if test="version != null">
         #{version,jdbcType=VARCHAR},
@@ -201,13 +191,13 @@
         LASTLOGINTIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.userType != null">
-        USERTYPE = #{record.userType,jdbcType=INTEGER},
+        USERTYPE = #{record.userType,jdbcType=DECIMAL},
       </if>
       <if test="record.loginIp != null">
         LOGINIP = #{record.loginIp,jdbcType=VARCHAR},
       </if>
       <if test="record.logFrom != null">
-        LOGFROM = #{record.logFrom,jdbcType=INTEGER},
+        LOGFROM = #{record.logFrom,jdbcType=DECIMAL},
       </if>
       <if test="record.version != null">
         VERSION = #{record.version,jdbcType=VARCHAR},
@@ -231,9 +221,9 @@
     set SESSIONID = #{record.sessionId,jdbcType=VARCHAR},
       USERNAME = #{record.username,jdbcType=VARCHAR},
       LASTLOGINTIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
-      USERTYPE = #{record.userType,jdbcType=INTEGER},
+      USERTYPE = #{record.userType,jdbcType=DECIMAL},
       LOGINIP = #{record.loginIp,jdbcType=VARCHAR},
-      LOGFROM = #{record.logFrom,jdbcType=INTEGER},
+      LOGFROM = #{record.logFrom,jdbcType=DECIMAL},
       VERSION = #{record.version,jdbcType=VARCHAR},
       RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
       RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
@@ -241,51 +231,5 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prtr.ykgc.entity.UserSession">
-    update TB_USER_SESSION
-    <set>
-      <if test="username != null">
-        USERNAME = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        LASTLOGINTIME = #{lastLoginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userType != null">
-        USERTYPE = #{userType,jdbcType=INTEGER},
-      </if>
-      <if test="loginIp != null">
-        LOGINIP = #{loginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="logFrom != null">
-        LOGFROM = #{logFrom,jdbcType=INTEGER},
-      </if>
-      <if test="version != null">
-        VERSION = #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve1 != null">
-        RESERVE1 = #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null">
-        RESERVE2 = #{reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve3 != null">
-        RESERVE3 = #{reserve3,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where SESSIONID = #{sessionId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.prtr.ykgc.entity.UserSession">
-    update TB_USER_SESSION
-    set USERNAME = #{username,jdbcType=VARCHAR},
-      LASTLOGINTIME = #{lastLoginTime,jdbcType=TIMESTAMP},
-      USERTYPE = #{userType,jdbcType=INTEGER},
-      LOGINIP = #{loginIp,jdbcType=VARCHAR},
-      LOGFROM = #{logFrom,jdbcType=INTEGER},
-      VERSION = #{version,jdbcType=VARCHAR},
-      RESERVE1 = #{reserve1,jdbcType=VARCHAR},
-      RESERVE2 = #{reserve2,jdbcType=VARCHAR},
-      RESERVE3 = #{reserve3,jdbcType=VARCHAR}
-    where SESSIONID = #{sessionId,jdbcType=VARCHAR}
   </update>
 </mapper>

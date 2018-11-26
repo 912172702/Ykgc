@@ -215,16 +215,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLike(String value) {
-            addCriterion("USERNAME like", value, "username");
-            return (Criteria) this;
-        }
-
-        public Criteria andUsernameNotLike(String value) {
-            addCriterion("USERNAME not like", value, "username");
-            return (Criteria) this;
-        }
-
         public Criteria andUsernameIn(List<String> values) {
             addCriterion("USERNAME in", values, "username");
             return (Criteria) this;
@@ -282,16 +272,6 @@ public class UserExample {
 
         public Criteria andUserPasswordLessThanOrEqualTo(String value) {
             addCriterion("USERPASSWORD <=", value, "userPassword");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserPasswordLike(String value) {
-            addCriterion("USERPASSWORD like", value, "userPassword");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserPasswordNotLike(String value) {
-            addCriterion("USERPASSWORD not like", value, "userPassword");
             return (Criteria) this;
         }
 
@@ -355,16 +335,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegisterSiteIdLike(String value) {
-            addCriterion("REGISTERSITEID like", value, "registerSiteId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegisterSiteIdNotLike(String value) {
-            addCriterion("REGISTERSITEID not like", value, "registerSiteId");
-            return (Criteria) this;
-        }
-
         public Criteria andRegisterSiteIdIn(List<String> values) {
             addCriterion("REGISTERSITEID in", values, "registerSiteId");
             return (Criteria) this;
@@ -422,16 +392,6 @@ public class UserExample {
 
         public Criteria andAuthorityLessThanOrEqualTo(String value) {
             addCriterion("AUTHORITY <=", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityLike(String value) {
-            addCriterion("AUTHORITY like", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityNotLike(String value) {
-            addCriterion("AUTHORITY not like", value, "authority");
             return (Criteria) this;
         }
 
@@ -495,16 +455,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRealNameLike(String value) {
-            addCriterion("REALNAME like", value, "realName");
-            return (Criteria) this;
-        }
-
-        public Criteria andRealNameNotLike(String value) {
-            addCriterion("REALNAME not like", value, "realName");
-            return (Criteria) this;
-        }
-
         public Criteria andRealNameIn(List<String> values) {
             addCriterion("REALNAME in", values, "realName");
             return (Criteria) this;
@@ -562,16 +512,6 @@ public class UserExample {
 
         public Criteria andCarIdLessThanOrEqualTo(String value) {
             addCriterion("CARDID <=", value, "carId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarIdLike(String value) {
-            addCriterion("CARDID like", value, "carId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarIdNotLike(String value) {
-            addCriterion("CARDID not like", value, "carId");
             return (Criteria) this;
         }
 
@@ -635,16 +575,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLike(String value) {
-            addCriterion("PHONE like", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneNotLike(String value) {
-            addCriterion("PHONE not like", value, "phone");
-            return (Criteria) this;
-        }
-
         public Criteria andPhoneIn(List<String> values) {
             addCriterion("PHONE in", values, "phone");
             return (Criteria) this;
@@ -702,16 +632,6 @@ public class UserExample {
 
         public Criteria andDepartmentIdLessThanOrEqualTo(String value) {
             addCriterion("DEPARTMENTID <=", value, "departmentId");
-            return (Criteria) this;
-        }
-
-        public Criteria andDepartmentIdLike(String value) {
-            addCriterion("DEPARTMENTID like", value, "departmentId");
-            return (Criteria) this;
-        }
-
-        public Criteria andDepartmentIdNotLike(String value) {
-            addCriterion("DEPARTMENTID not like", value, "departmentId");
             return (Criteria) this;
         }
 
@@ -835,16 +755,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRemarkLike(String value) {
-            addCriterion("REMARK like", value, "remark");
-            return (Criteria) this;
-        }
-
-        public Criteria andRemarkNotLike(String value) {
-            addCriterion("REMARK not like", value, "remark");
-            return (Criteria) this;
-        }
-
         public Criteria andRemarkIn(List<String> values) {
             addCriterion("REMARK in", values, "remark");
             return (Criteria) this;
@@ -905,16 +815,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLike(String value) {
-            addCriterion("ROLEID like", value, "roleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleIdNotLike(String value) {
-            addCriterion("ROLEID not like", value, "roleId");
-            return (Criteria) this;
-        }
-
         public Criteria andRoleIdIn(List<String> values) {
             addCriterion("ROLEID in", values, "roleId");
             return (Criteria) this;
@@ -935,73 +835,63 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntIsNull() {
-            addCriterion("POLICEINT is null");
+        public Criteria andPoliceNumberIsNull() {
+            addCriterion("POLICENUMBER is null");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntIsNotNull() {
-            addCriterion("POLICEINT is not null");
+        public Criteria andPoliceNumberIsNotNull() {
+            addCriterion("POLICENUMBER is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntEqualTo(String value) {
-            addCriterion("POLICEINT =", value, "policeInt");
+        public Criteria andPoliceNumberEqualTo(String value) {
+            addCriterion("POLICENUMBER =", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntNotEqualTo(String value) {
-            addCriterion("POLICEINT <>", value, "policeInt");
+        public Criteria andPoliceNumberNotEqualTo(String value) {
+            addCriterion("POLICENUMBER <>", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntGreaterThan(String value) {
-            addCriterion("POLICEINT >", value, "policeInt");
+        public Criteria andPoliceNumberGreaterThan(String value) {
+            addCriterion("POLICENUMBER >", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntGreaterThanOrEqualTo(String value) {
-            addCriterion("POLICEINT >=", value, "policeInt");
+        public Criteria andPoliceNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("POLICENUMBER >=", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntLessThan(String value) {
-            addCriterion("POLICEINT <", value, "policeInt");
+        public Criteria andPoliceNumberLessThan(String value) {
+            addCriterion("POLICENUMBER <", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntLessThanOrEqualTo(String value) {
-            addCriterion("POLICEINT <=", value, "policeInt");
+        public Criteria andPoliceNumberLessThanOrEqualTo(String value) {
+            addCriterion("POLICENUMBER <=", value, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntLike(String value) {
-            addCriterion("POLICEINT like", value, "policeInt");
+        public Criteria andPoliceNumberIn(List<String> values) {
+            addCriterion("POLICENUMBER in", values, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntNotLike(String value) {
-            addCriterion("POLICEINT not like", value, "policeInt");
+        public Criteria andPoliceNumberNotIn(List<String> values) {
+            addCriterion("POLICENUMBER not in", values, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntIn(List<String> values) {
-            addCriterion("POLICEINT in", values, "policeInt");
+        public Criteria andPoliceNumberBetween(String value1, String value2) {
+            addCriterion("POLICENUMBER between", value1, value2, "policeNumber");
             return (Criteria) this;
         }
 
-        public Criteria andPoliceIntNotIn(List<String> values) {
-            addCriterion("POLICEINT not in", values, "policeInt");
-            return (Criteria) this;
-        }
-
-        public Criteria andPoliceIntBetween(String value1, String value2) {
-            addCriterion("POLICEINT between", value1, value2, "policeInt");
-            return (Criteria) this;
-        }
-
-        public Criteria andPoliceIntNotBetween(String value1, String value2) {
-            addCriterion("POLICEINT not between", value1, value2, "policeInt");
+        public Criteria andPoliceNumberNotBetween(String value1, String value2) {
+            addCriterion("POLICENUMBER not between", value1, value2, "policeNumber");
             return (Criteria) this;
         }
 
@@ -1042,16 +932,6 @@ public class UserExample {
 
         public Criteria andOldErIdLessThanOrEqualTo(String value) {
             addCriterion("OLDERID <=", value, "oldErId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOldErIdLike(String value) {
-            addCriterion("OLDERID like", value, "oldErId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOldErIdNotLike(String value) {
-            addCriterion("OLDERID not like", value, "oldErId");
             return (Criteria) this;
         }
 

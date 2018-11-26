@@ -1,7 +1,5 @@
 package com.prtr.ykgc.business.constant;
 
-import com.prtr.ykgc.entity.RoleMenu;
-
 /**
  * @Author: Knox
  * @Date: 2018/11/25 7:28 PM

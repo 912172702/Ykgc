@@ -1,7 +1,6 @@
 package com.prtr.ykgc.entity;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class User {
     private String userId;
@@ -28,7 +27,7 @@ public class User {
 
     private String roleId;
 
-    private String policeInt;
+    private String policeNumber;
 
     private String oldErId;
 
@@ -144,12 +143,12 @@ public class User {
         this.roleId = roleId == null ? null : roleId.trim();
     }
 
-    public String getPoliceInt() {
-        return policeInt;
+    public String getPoliceNumber() {
+        return policeNumber;
     }
 
-    public void setPoliceInt(String policeInt) {
-        this.policeInt = policeInt == null ? null : policeInt.trim();
+    public void setPoliceNumber(String policeNumber) {
+        this.policeNumber = policeNumber == null ? null : policeNumber.trim();
     }
 
     public String getOldErId() {

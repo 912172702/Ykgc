@@ -4,11 +4,16 @@ server:
 #数据源配置
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url:  jdbc:mysql://namenode:3306/ykgc?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: root
-    password: qq1995912qq
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url:  jdbc:mysql://namenode:3306/ykgc?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    #username: root
+    #password: qq1995912qq
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.82.82.166:1521:orcl
     type: com.alibaba.druid.pool.DruidDataSource
+    username: YKGC
+    password: zyk27ZYK
+
 
 
 

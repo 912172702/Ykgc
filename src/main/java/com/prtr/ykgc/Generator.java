@@ -37,6 +37,7 @@ public class Generator {
         }
         try {
             myBatisGenerator.generate(null);
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {

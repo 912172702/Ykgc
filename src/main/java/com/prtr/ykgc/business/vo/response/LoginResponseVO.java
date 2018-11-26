@@ -2,9 +2,7 @@ package com.prtr.ykgc.business.vo.response;
 
 import com.prtr.ykgc.business.pojo.UserPojo;
 import com.prtr.ykgc.entity.RoleMenu;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;

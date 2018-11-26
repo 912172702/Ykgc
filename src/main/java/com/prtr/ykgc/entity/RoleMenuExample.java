@@ -204,16 +204,6 @@ public class RoleMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andMenuNameLike(String value) {
-            addCriterion("MENUNAME like", value, "menuName");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuNameNotLike(String value) {
-            addCriterion("MENUNAME not like", value, "menuName");
-            return (Criteria) this;
-        }
-
         public Criteria andMenuNameIn(List<String> values) {
             addCriterion("MENUNAME in", values, "menuName");
             return (Criteria) this;
@@ -334,16 +324,6 @@ public class RoleMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andUrlLike(String value) {
-            addCriterion("URL like", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotLike(String value) {
-            addCriterion("URL not like", value, "url");
-            return (Criteria) this;
-        }
-
         public Criteria andUrlIn(List<String> values) {
             addCriterion("URL in", values, "url");
             return (Criteria) this;
@@ -404,16 +384,6 @@ public class RoleMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andIconLike(String value) {
-            addCriterion("ICON like", value, "icon");
-            return (Criteria) this;
-        }
-
-        public Criteria andIconNotLike(String value) {
-            addCriterion("ICON not like", value, "icon");
-            return (Criteria) this;
-        }
-
         public Criteria andIconIn(List<String> values) {
             addCriterion("ICON in", values, "icon");
             return (Criteria) this;
@@ -471,16 +441,6 @@ public class RoleMenuExample {
 
         public Criteria andRemarkLessThanOrEqualTo(String value) {
             addCriterion("REMARK <=", value, "remark");
-            return (Criteria) this;
-        }
-
-        public Criteria andRemarkLike(String value) {
-            addCriterion("REMARK like", value, "remark");
-            return (Criteria) this;
-        }
-
-        public Criteria andRemarkNotLike(String value) {
-            addCriterion("REMARK not like", value, "remark");
             return (Criteria) this;
         }
 

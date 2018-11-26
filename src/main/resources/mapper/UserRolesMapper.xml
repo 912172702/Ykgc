@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prtr.ykgc.mapper.UserRolesMapper">
   <resultMap id="BaseResultMap" type="com.prtr.ykgc.entity.UserRoles">
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
     <result column="USERID" jdbcType="VARCHAR" property="userId" />
     <result column="ROLEID" jdbcType="VARCHAR" property="roleId" />
   </resultMap>
@@ -81,16 +81,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from TB_USER_ROLES
-    where ID = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from TB_USER_ROLES
-    where ID = #{id,jdbcType=VARCHAR}
-  </delete>
   <delete id="deleteByExample" parameterType="com.prtr.ykgc.entity.UserRolesExample">
     delete from TB_USER_ROLES
     <if test="_parameter != null">
@@ -159,23 +149,5 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prtr.ykgc.entity.UserRoles">
-    update TB_USER_ROLES
-    <set>
-      <if test="userId != null">
-        USERID = #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null">
-        ROLEID = #{roleId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.prtr.ykgc.entity.UserRoles">
-    update TB_USER_ROLES
-    set USERID = #{userId,jdbcType=VARCHAR},
-      ROLEID = #{roleId,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

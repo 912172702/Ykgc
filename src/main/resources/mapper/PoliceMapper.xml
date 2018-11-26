@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prtr.ykgc.mapper.PoliceMapper">
   <resultMap id="BaseResultMap" type="com.prtr.ykgc.entity.Police">
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
     <result column="UNIT_ID" jdbcType="VARCHAR" property="unitId" />
     <result column="ID_CARD" jdbcType="VARCHAR" property="idCard" />
     <result column="PHONE" jdbcType="VARCHAR" property="phone" />
     <result column="POLICE_CODE" jdbcType="VARCHAR" property="policeCode" />
-    <result column="POLICE_LEVEL" jdbcType="INTEGER" property="policeLevel" />
+    <result column="POLICE_LEVEL" jdbcType="DECIMAL" property="policeLevel" />
     <result column="REMARK" jdbcType="VARCHAR" property="remark" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -85,16 +85,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from TB_POLICE
-    where ID = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from TB_POLICE
-    where ID = #{id,jdbcType=VARCHAR}
-  </delete>
   <delete id="deleteByExample" parameterType="com.prtr.ykgc.entity.PoliceExample">
     delete from TB_POLICE
     <if test="_parameter != null">
@@ -106,7 +96,7 @@
       PHONE, POLICE_CODE, POLICE_LEVEL, 
       REMARK)
     values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{policeCode,jdbcType=VARCHAR}, #{policeLevel,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{policeCode,jdbcType=VARCHAR}, #{policeLevel,jdbcType=DECIMAL}, 
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.prtr.ykgc.entity.Police">
@@ -151,7 +141,7 @@
         #{policeCode,jdbcType=VARCHAR},
       </if>
       <if test="policeLevel != null">
-        #{policeLevel,jdbcType=INTEGER},
+        #{policeLevel,jdbcType=DECIMAL},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -183,7 +173,7 @@
         POLICE_CODE = #{record.policeCode,jdbcType=VARCHAR},
       </if>
       <if test="record.policeLevel != null">
-        POLICE_LEVEL = #{record.policeLevel,jdbcType=INTEGER},
+        POLICE_LEVEL = #{record.policeLevel,jdbcType=DECIMAL},
       </if>
       <if test="record.remark != null">
         REMARK = #{record.remark,jdbcType=VARCHAR},
@@ -200,44 +190,10 @@
       ID_CARD = #{record.idCard,jdbcType=VARCHAR},
       PHONE = #{record.phone,jdbcType=VARCHAR},
       POLICE_CODE = #{record.policeCode,jdbcType=VARCHAR},
-      POLICE_LEVEL = #{record.policeLevel,jdbcType=INTEGER},
+      POLICE_LEVEL = #{record.policeLevel,jdbcType=DECIMAL},
       REMARK = #{record.remark,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.prtr.ykgc.entity.Police">
-    update TB_POLICE
-    <set>
-      <if test="unitId != null">
-        UNIT_ID = #{unitId,jdbcType=VARCHAR},
-      </if>
-      <if test="idCard != null">
-        ID_CARD = #{idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        PHONE = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="policeCode != null">
-        POLICE_CODE = #{policeCode,jdbcType=VARCHAR},
-      </if>
-      <if test="policeLevel != null">
-        POLICE_LEVEL = #{policeLevel,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        REMARK = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.prtr.ykgc.entity.Police">
-    update TB_POLICE
-    set UNIT_ID = #{unitId,jdbcType=VARCHAR},
-      ID_CARD = #{idCard,jdbcType=VARCHAR},
-      PHONE = #{phone,jdbcType=VARCHAR},
-      POLICE_CODE = #{policeCode,jdbcType=VARCHAR},
-      POLICE_LEVEL = #{policeLevel,jdbcType=INTEGER},
-      REMARK = #{remark,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

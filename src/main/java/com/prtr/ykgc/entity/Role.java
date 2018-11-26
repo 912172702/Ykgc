@@ -1,6 +1,5 @@
 package com.prtr.ykgc.entity;
 
-
 import java.util.Date;
 
 public class Role {

@@ -1,7 +1,6 @@
 package com.prtr.ykgc.business.pojo;
 
 import com.prtr.ykgc.entity.User;
-import com.prtr.ykgc.entity.UserSession;
 import lombok.Data;
 
 import java.io.Serializable;

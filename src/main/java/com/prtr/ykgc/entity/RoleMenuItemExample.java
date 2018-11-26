@@ -204,16 +204,6 @@ public class RoleMenuItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLike(String value) {
-            addCriterion("ROLEID like", value, "roleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleIdNotLike(String value) {
-            addCriterion("ROLEID not like", value, "roleId");
-            return (Criteria) this;
-        }
-
         public Criteria andRoleIdIn(List<String> values) {
             addCriterion("ROLEID in", values, "roleId");
             return (Criteria) this;

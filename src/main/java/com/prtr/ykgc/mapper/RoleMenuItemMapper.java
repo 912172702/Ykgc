@@ -10,21 +10,13 @@ public interface RoleMenuItemMapper {
 
     int deleteByExample(RoleMenuItemExample example);
 
-    int deleteByPrimaryKey(Integer menuInnerId);
-
     int insert(RoleMenuItem record);
 
     int insertSelective(RoleMenuItem record);
 
     List<RoleMenuItem> selectByExample(RoleMenuItemExample example);
 
-    RoleMenuItem selectByPrimaryKey(Integer menuInnerId);
-
     int updateByExampleSelective(@Param("record") RoleMenuItem record, @Param("example") RoleMenuItemExample example);
 
     int updateByExample(@Param("record") RoleMenuItem record, @Param("example") RoleMenuItemExample example);
-
-    int updateByPrimaryKeySelective(RoleMenuItem record);
-
-    int updateByPrimaryKey(RoleMenuItem record);
 }

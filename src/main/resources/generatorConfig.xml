@@ -8,13 +8,13 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--需要配置数据库连接-->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://namenode:3306/ykgc?characterEncoding=utf-8&amp;useSSL=false"
-                        userId="root"
-                        password="qq1995912qq">
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@10.82.82.166:1521:orcl"
+                        userId="YKGC"
+                        password="zyk27ZYK">
         </jdbcConnection>
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
+        <javaTypeResolver type="com.prtr.ykgc.OracleJavaTypeResolver">
+            <!--<property  name="forceBigDecimals" value="false"/>-->
         </javaTypeResolver>
 
         <!--指定entity生成的位置-->
@@ -41,19 +41,22 @@
             <columnOverride column="ROLEID" property="roleId"></columnOverride>
             <columnOverride column="ROLENAME" property="roleName"></columnOverride>
             <columnOverride column="CREATETIME" property="createTime"></columnOverride>
-            <columnOverride column="ROLELEVEL" property="roleLevel"></columnOverride>
+            <columnOverride column="TYPE" javaType="java.lang.Integer"></columnOverride>
+            <columnOverride column="ROLELEVEL" javaType="java.lang.Integer" property="roleLevel"></columnOverride>
         </table>
         <table tableName="TB_ROLE_MENU" domainObjectName="RoleMenu">
-            <columnOverride column="MENUID" property="menuId"></columnOverride>
+            <columnOverride column="MENUID" javaType="java.lang.Integer" property="menuId"></columnOverride>
             <columnOverride column="MENUNAME" property="menuName"></columnOverride>
-            <columnOverride column="MENUFATHERID" property="menuFatherId"></columnOverride>
-            <columnOverride column="ISINNER" property="isInner"></columnOverride>
-            <columnOverride column="ISOUTER" property="isOuter"></columnOverride>
+            <columnOverride column="MENUFATHERID" javaType="java.lang.Integer" property="menuFatherId"></columnOverride>
+            <columnOverride column="SORT" javaType="java.lang.Integer"></columnOverride>
+            <columnOverride column="ISINNER" javaType="java.lang.Integer" property="isInner"></columnOverride>
+            <columnOverride column="ISOUTER" javaType="java.lang.Integer" property="isOuter"></columnOverride>
+            <columnOverride column="STATUS" javaType="java.lang.Integer"></columnOverride>
         </table>
         <table tableName="TB_ROLE_MENUITEM" domainObjectName="RoleMenuItem">
-            <columnOverride column="MENUINNERID" property="menuInnerId"></columnOverride>
+            <columnOverride column="MENUINNERID" javaType="java.lang.Integer" property="menuInnerId"></columnOverride>
             <columnOverride column="ROLEID" property="roleId"></columnOverride>
-            <columnOverride column="ROLEMENUID" property="roleMenuId"></columnOverride>
+            <columnOverride column="ROLEMENUID" javaType="java.lang.Integer" property="roleMenuId"></columnOverride>
         </table>
 
         <table tableName="TB_USER_ROLES" domainObjectName="UserRoles">
@@ -63,9 +66,9 @@
         <table tableName="TB_USER_SESSION" domainObjectName="UserSession">
             <columnOverride column="SESSIONID" property="sessionId"></columnOverride>
             <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
-            <columnOverride column="USERTYPE" property="userType"></columnOverride>
+            <columnOverride column="USERTYPE" javaType="java.lang.Integer" property="userType"></columnOverride>
             <columnOverride column="LOGINIP" property="loginIp"></columnOverride>
-            <columnOverride column="LOGFROM" property="logFrom"></columnOverride>
+            <columnOverride column="LOGFROM" javaType="java.lang.Integer" property="logFrom"></columnOverride>
         </table>
 
 
@@ -78,15 +81,17 @@
             <columnOverride column="DEPARTMENTID" property="departmentId"></columnOverride>
             <columnOverride column="LASTLOGINTIME" property="lastLoginTime"></columnOverride>
             <columnOverride column="ROLEID" property="roleId"></columnOverride>
-            <columnOverride column="POLICEINT" property="policeInt"></columnOverride>
+            <columnOverride column="POLICENUMBER" property="policeNumber"></columnOverride>
             <columnOverride column="OLDERID" property="oldErId"></columnOverride>
-            <columnOverride column="DEPTGRADE" property="deptGrade"></columnOverride>
+            <columnOverride column="DEPTGRADE" javaType="java.lang.Integer" property="deptGrade"></columnOverride>
             <columnOverride column="CREATETIME" property="createTime"></columnOverride>
-            <columnOverride column="CANDEL" property="canDel"></columnOverride>
-            <columnOverride column="ISDEL" property="isDel"></columnOverride>
-            <columnOverride column="ISADMIN" property="isAdmin"></columnOverride>
+            <columnOverride column="CANDEL" javaType="java.lang.Integer" property="canDel"></columnOverride>
+            <columnOverride column="ISDEL" javaType="java.lang.Integer" property="isDel"></columnOverride>
+            <columnOverride column="ISADMIN" javaType="java.lang.Integer" property="isAdmin"></columnOverride>
         </table>
-        <!--<table tableName="TB_POLICE" domainObjectName="Police"></table>-->
+        <table tableName="TB_POLICE" domainObjectName="Police">
+            <columnOverride column="POLICE_LEVEL" javaType="java.lang.Integer"></columnOverride>
+        </table>
 
     </context>
 </generatorConfiguration>

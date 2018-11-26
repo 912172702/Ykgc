@@ -1,6 +1,5 @@
 package com.prtr.ykgc.controller;
 
-import com.alibaba.druid.VERSION;
 import com.prtr.ykgc.business.annotation.AuthChecker;
 import com.prtr.ykgc.business.constant.Code;
 import com.prtr.ykgc.business.constant.UserRole;

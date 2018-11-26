@@ -10,21 +10,13 @@ public interface PoliceMapper {
 
     int deleteByExample(PoliceExample example);
 
-    int deleteByPrimaryKey(String id);
-
     int insert(Police record);
 
     int insertSelective(Police record);
 
     List<Police> selectByExample(PoliceExample example);
 
-    Police selectByPrimaryKey(String id);
-
     int updateByExampleSelective(@Param("record") Police record, @Param("example") PoliceExample example);
 
     int updateByExample(@Param("record") Police record, @Param("example") PoliceExample example);
-
-    int updateByPrimaryKeySelective(Police record);
-
-    int updateByPrimaryKey(Police record);
 }
