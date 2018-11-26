@@ -5,14 +5,20 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.prtr.ykgc.business.interceptor.TokenInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,4 +71,42 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         converters.add(converter);
         super.configureMessageConverters(converters);
     }
+
+    /**
+     * 解决跨域访问的问题
+     *
+     * @param registry
+     */
+    @Override
+    protected void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowCredentials(true)
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "DELETE", "PUT")
+                .maxAge(5000);
+        super.addCorsMappings(registry);
+    }
+
+    private CorsConfiguration addCorsConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        List<String> list = new ArrayList<>();
+        list.add("*");
+        corsConfiguration.setAllowedOrigins(list);
+    /*
+    // 请求常用的三种配置，*代表允许所有，当时你也可以自定义属性（比如header只能带什么，只能是post方式等等）
+    */
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        return corsConfiguration;
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", addCorsConfig());
+        return new CorsFilter(source);
+    }
 }
+
+

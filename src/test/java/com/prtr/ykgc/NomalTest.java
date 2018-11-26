@@ -1,13 +1,6 @@
 package com.prtr.ykgc;
 
 import org.junit.Test;
-import org.springframework.util.ObjectUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.IntStream;
 
 /**
  * @Author: Knox
@@ -19,8 +12,8 @@ public class NomalTest {
 
     @Test
     public void test() {
-        List<String> a = new ArrayList<>();
-        System.out.println(ObjectUtils.isEmpty(a));
+//        List<String> a = new ArrayList<>();
+//        System.out.println(ObjectUtils.isEmpty(a));
     }
 
     @Test

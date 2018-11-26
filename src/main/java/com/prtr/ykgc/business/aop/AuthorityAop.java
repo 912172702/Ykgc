@@ -52,7 +52,7 @@ public class AuthorityAop {
     }
 
     /**
-     * 查看用户的登录Token是否已经过期，并且查看用户是否有权调用API
+     * 查看用户是否有权调用API
      *
      * @param point 切入点
      * @return 函数的返回值

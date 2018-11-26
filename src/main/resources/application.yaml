@@ -56,9 +56,15 @@ project:
       pathPatterns:
         - /**
       excludePathPatterns:
-        - /
         - /**/login
         - /**/*.html
+        - /**/*.js
+        - /**/*.css
+        - /**/*.png
+        - /**/*.jpg
+        - /**/*.jpeg
+        - /**/*.gif
+        - /**/*.woff2
         - /**/swagger-resources/**
         - /csrf
         - /error
