@@ -14,7 +14,7 @@ import java.sql.Types;
 public class OracleJavaTypeResolver extends JavaTypeResolverDefaultImpl {
     public OracleJavaTypeResolver() {
         super();
-        super.typeMap.put(Types.OTHER, new JdbcTypeInformation("NVARCHAR2", new FullyQualifiedJavaType(String.class.getName())));
+        super.typeMap.put(Types.OTHER, new JdbcTypeInformation("OTHER", new FullyQualifiedJavaType(String.class.getName())));
     }
 
 }

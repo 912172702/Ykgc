@@ -3,8 +3,8 @@
 <mapper namespace="com.prtr.ykgc.mapper.RoleMapper">
   <resultMap id="BaseResultMap" type="com.prtr.ykgc.entity.Role">
     <result column="ROLEID" jdbcType="VARCHAR" property="roleId" />
-    <result column="ROLENAME" jdbcType="NVARCHAR2" property="roleName" />
-    <result column="REMARK" jdbcType="NVARCHAR2" property="remark" />
+    <result column="ROLENAME" jdbcType="OTHER" property="roleName" />
+    <result column="REMARK" jdbcType="OTHER" property="remark" />
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="TYPE" jdbcType="DECIMAL" property="type" />
     <result column="ROLELEVEL" jdbcType="DECIMAL" property="roleLevel" />
@@ -94,7 +94,7 @@
     insert into TB_ROLE (ROLEID, ROLENAME, REMARK, 
       CREATETIME, TYPE, ROLELEVEL
       )
-    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=NVARCHAR2}, #{remark,jdbcType=NVARCHAR2}, 
+    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=OTHER}, #{remark,jdbcType=OTHER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=DECIMAL}, #{roleLevel,jdbcType=DECIMAL}
       )
   </insert>
@@ -125,10 +125,10 @@
         #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="roleName != null">
-        #{roleName,jdbcType=NVARCHAR2},
+        #{roleName,jdbcType=OTHER},
       </if>
       <if test="remark != null">
-        #{remark,jdbcType=NVARCHAR2},
+        #{remark,jdbcType=OTHER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -154,10 +154,10 @@
         ROLEID = #{record.roleId,jdbcType=VARCHAR},
       </if>
       <if test="record.roleName != null">
-        ROLENAME = #{record.roleName,jdbcType=NVARCHAR2},
+        ROLENAME = #{record.roleName,jdbcType=OTHER},
       </if>
       <if test="record.remark != null">
-        REMARK = #{record.remark,jdbcType=NVARCHAR2},
+        REMARK = #{record.remark,jdbcType=OTHER},
       </if>
       <if test="record.createTime != null">
         CREATETIME = #{record.createTime,jdbcType=TIMESTAMP},
@@ -176,8 +176,8 @@
   <update id="updateByExample" parameterType="map">
     update TB_ROLE
     set ROLEID = #{record.roleId,jdbcType=VARCHAR},
-      ROLENAME = #{record.roleName,jdbcType=NVARCHAR2},
-      REMARK = #{record.remark,jdbcType=NVARCHAR2},
+      ROLENAME = #{record.roleName,jdbcType=OTHER},
+      REMARK = #{record.remark,jdbcType=OTHER},
       CREATETIME = #{record.createTime,jdbcType=TIMESTAMP},
       TYPE = #{record.type,jdbcType=DECIMAL},
       ROLELEVEL = #{record.roleLevel,jdbcType=DECIMAL}

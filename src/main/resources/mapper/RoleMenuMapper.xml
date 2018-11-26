@@ -3,11 +3,11 @@
 <mapper namespace="com.prtr.ykgc.mapper.RoleMenuMapper">
   <resultMap id="BaseResultMap" type="com.prtr.ykgc.entity.RoleMenu">
     <result column="MENUID" jdbcType="DECIMAL" property="menuId" />
-    <result column="MENUNAME" jdbcType="NVARCHAR2" property="menuName" />
+    <result column="MENUNAME" jdbcType="OTHER" property="menuName" />
     <result column="MENUFATHERID" jdbcType="DECIMAL" property="menuFatherId" />
-    <result column="URL" jdbcType="NVARCHAR2" property="url" />
-    <result column="ICON" jdbcType="NVARCHAR2" property="icon" />
-    <result column="REMARK" jdbcType="NVARCHAR2" property="remark" />
+    <result column="URL" jdbcType="OTHER" property="url" />
+    <result column="ICON" jdbcType="OTHER" property="icon" />
+    <result column="REMARK" jdbcType="OTHER" property="remark" />
     <result column="SORT" jdbcType="DECIMAL" property="sort" />
     <result column="ISINNER" jdbcType="DECIMAL" property="isInner" />
     <result column="ISOUTER" jdbcType="DECIMAL" property="isOuter" />
@@ -96,13 +96,13 @@
   </delete>
   <insert id="insert" parameterType="com.prtr.ykgc.entity.RoleMenu">
     insert into TB_ROLE_MENU (MENUID, MENUNAME, MENUFATHERID, 
-      URL, ICON, REMARK, 
-      SORT, ISINNER, ISOUTER, 
-      STATUS)
-    values (#{menuId,jdbcType=DECIMAL}, #{menuName,jdbcType=NVARCHAR2}, #{menuFatherId,jdbcType=DECIMAL}, 
-      #{url,jdbcType=NVARCHAR2}, #{icon,jdbcType=NVARCHAR2}, #{remark,jdbcType=NVARCHAR2}, 
-      #{sort,jdbcType=DECIMAL}, #{isInner,jdbcType=DECIMAL}, #{isOuter,jdbcType=DECIMAL}, 
-      #{status,jdbcType=DECIMAL})
+      URL, ICON, REMARK, SORT, 
+      ISINNER, ISOUTER, STATUS
+      )
+    values (#{menuId,jdbcType=DECIMAL}, #{menuName,jdbcType=OTHER}, #{menuFatherId,jdbcType=DECIMAL}, 
+      #{url,jdbcType=OTHER}, #{icon,jdbcType=OTHER}, #{remark,jdbcType=OTHER}, #{sort,jdbcType=DECIMAL}, 
+      #{isInner,jdbcType=DECIMAL}, #{isOuter,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.prtr.ykgc.entity.RoleMenu">
     insert into TB_ROLE_MENU
@@ -143,19 +143,19 @@
         #{menuId,jdbcType=DECIMAL},
       </if>
       <if test="menuName != null">
-        #{menuName,jdbcType=NVARCHAR2},
+        #{menuName,jdbcType=OTHER},
       </if>
       <if test="menuFatherId != null">
         #{menuFatherId,jdbcType=DECIMAL},
       </if>
       <if test="url != null">
-        #{url,jdbcType=NVARCHAR2},
+        #{url,jdbcType=OTHER},
       </if>
       <if test="icon != null">
-        #{icon,jdbcType=NVARCHAR2},
+        #{icon,jdbcType=OTHER},
       </if>
       <if test="remark != null">
-        #{remark,jdbcType=NVARCHAR2},
+        #{remark,jdbcType=OTHER},
       </if>
       <if test="sort != null">
         #{sort,jdbcType=DECIMAL},
@@ -184,19 +184,19 @@
         MENUID = #{record.menuId,jdbcType=DECIMAL},
       </if>
       <if test="record.menuName != null">
-        MENUNAME = #{record.menuName,jdbcType=NVARCHAR2},
+        MENUNAME = #{record.menuName,jdbcType=OTHER},
       </if>
       <if test="record.menuFatherId != null">
         MENUFATHERID = #{record.menuFatherId,jdbcType=DECIMAL},
       </if>
       <if test="record.url != null">
-        URL = #{record.url,jdbcType=NVARCHAR2},
+        URL = #{record.url,jdbcType=OTHER},
       </if>
       <if test="record.icon != null">
-        ICON = #{record.icon,jdbcType=NVARCHAR2},
+        ICON = #{record.icon,jdbcType=OTHER},
       </if>
       <if test="record.remark != null">
-        REMARK = #{record.remark,jdbcType=NVARCHAR2},
+        REMARK = #{record.remark,jdbcType=OTHER},
       </if>
       <if test="record.sort != null">
         SORT = #{record.sort,jdbcType=DECIMAL},
@@ -218,11 +218,11 @@
   <update id="updateByExample" parameterType="map">
     update TB_ROLE_MENU
     set MENUID = #{record.menuId,jdbcType=DECIMAL},
-      MENUNAME = #{record.menuName,jdbcType=NVARCHAR2},
+      MENUNAME = #{record.menuName,jdbcType=OTHER},
       MENUFATHERID = #{record.menuFatherId,jdbcType=DECIMAL},
-      URL = #{record.url,jdbcType=NVARCHAR2},
-      ICON = #{record.icon,jdbcType=NVARCHAR2},
-      REMARK = #{record.remark,jdbcType=NVARCHAR2},
+      URL = #{record.url,jdbcType=OTHER},
+      ICON = #{record.icon,jdbcType=OTHER},
+      REMARK = #{record.remark,jdbcType=OTHER},
       SORT = #{record.sort,jdbcType=DECIMAL},
       ISINNER = #{record.isInner,jdbcType=DECIMAL},
       ISOUTER = #{record.isOuter,jdbcType=DECIMAL},
