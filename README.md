@@ -1,5 +1,5 @@
 # Ykgc
 实训项目
-- 首先将sql文件导入数据库
-- 将项目中的数据源改成自己的数据源
-- IDEA中安装lombok插件
+- 连上学院wifi，不需要改配置
+- API测试接口使用swagger2，[点这里](http://10.82.82.166:8080/swagger-ui.html)测试
+- IDEA中安装lombok插件,不然会报错
